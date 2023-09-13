@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
       passwordLenghtValue = 20;
     }
 
-    if (passwordLenghtValue < 6) {
-      passwordLenghtValue = 6;
+    if (passwordLenghtValue < 10) {
+      passwordLenghtValue = 10;
     }
 
     const pwGeneratedContainer = document.getElementById(
@@ -24,12 +24,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const letters = "abcdefghijklmnopqrstuvwxyz".split("");
     const letterUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     const numbers = "0123456789".split("");
-    const specialCharacters = "!#$%&'()*+,-./:_@;".split("");
+    const specialCharacters = "!#$%&'*+,-./:_@;".split("");
     let passWord = [];
 
     const digitsNumber = Math.round(passwordLenghtValue / 4);
-
-    console.log(digitsNumber);
 
     passWord = []
       .concat(getRandomCharacters(letters, digitsNumber))
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
       .sort(() => Math.random() - 0.5);
 
     passWord.splice(0, passWord.length - passwordLenghtValue);
-    console.log(passWord);
 
     pwGeneratedContainer.innerText = passWord.join("");
 
