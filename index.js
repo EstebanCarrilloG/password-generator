@@ -1,12 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("hello world!");
+document.addEventListener("DOMContentLoaded", function (e) {
 
-  let passWordGeneratorForm = document.querySelector("#passwordGeneratorForm");
-
+  const passWordGeneratorForm = document.getElementById(
+    "passwordGeneratorForm"
+  );
+ 
   passWordGeneratorForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const passwordLenghtValue = e.target.passwordLenght.value;
+    let passwordLenghtValue = e.target.passwordLenght.value;
+
+    if (passwordLenghtValue > 20) {
+      passwordLenghtValue = 20;
+    }
+
+    if (passwordLenghtValue < 6) {
+      passwordLenghtValue = 6;
+    }
 
     const pwGeneratedContainer = document.getElementById(
       "passWordGeneratorContainer"

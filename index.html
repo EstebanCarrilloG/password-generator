@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Security Password Generator</title>
-</head>
-<body>
-    <section class = "section">
-        <div class = "container">
-            <form  id="passwordGeneratorForm">
-                <label for="passwordLenght">Slect characters number: <input type="range" name="passwordLenght" id="passwordLenght" min="6" max="15" value="10"/></label>
-                <button type="submit">Generate password</button>
-            </form>
-            <div class="password-generated" id="passWordGeneratorContainer">
-
-            </div>
-
-        </div>
+  </head>
+  <body>
+    <section class="section">
+      
+      <div class="container">
+        <h1 class="section-title">Security Password Generator</h1>
+        <form
+          id="passwordGeneratorForm"
+          oninput="result.value=passwordLenght.value"
+        >
+          <label for="passwordLenght"
+            >Slect characters number:
+            <input
+              type="range"
+              name="passwordLenght"
+              id="passwordLenghtRange"
+              min="6"
+              max="20"
+              value="6"
+            /><output
+              class="range-value"
+              name="result"
+              for="passwordLenghtRange"
+              >6</output
+            ></label
+          >
+          <button type="submit">Generate password</button>
+        </form>
+        <div class="password-generated" id="passWordGeneratorContainer"></div>
+      </div>
     </section>
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>
