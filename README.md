@@ -9,7 +9,7 @@
 </ul>
 
 <h2>Demo</h2>
-<p>You can try the password generator live here.</p>
+<p>You can try the password generator live <a href= "https://estebancarrillog.github.io/password-generator/" target ="_blank">here.</a></p>
 
 <h2>Screenshots</h2>
 <img src="./assets/password-generator-interface-1.jpg" alt =""/>
