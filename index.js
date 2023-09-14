@@ -1,11 +1,16 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-
   const passWordGeneratorForm = document.getElementById(
     "passwordGeneratorForm"
   );
- 
+
   passWordGeneratorForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    const letterUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbers = "0123456789";
+    const specialCharacters = "!#$%&'*+,-./:_@;";
+    let passWord = [];
 
     let passwordLenghtValue = e.target.passwordLenght.value;
 
@@ -16,16 +21,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (passwordLenghtValue < 10) {
       passwordLenghtValue = 10;
     }
-
-    const pwGeneratedContainer = document.getElementById(
-      "passWordGeneratorContainer"
-    );
-
-    const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-    const letterUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-    const numbers = "0123456789".split("");
-    const specialCharacters = "!#$%&'*+,-./:_@;".split("");
-    let passWord = [];
 
     const digitsNumber = Math.round(passwordLenghtValue / 4);
 
@@ -38,15 +33,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     passWord.splice(0, passWord.length - passwordLenghtValue);
 
+    const pwGeneratedContainer = document.getElementById(
+      "passWordGeneratorContainer"
+    );
+
     pwGeneratedContainer.innerText = passWord.join("");
 
     function getRandomCharacters(array, n) {
       let newArray = [];
+      array.split("");
 
       for (let i = 0; i < n; i++) {
         newArray.push(array[Math.floor(Math.random() * array.length)]);
       }
-
       return newArray;
     }
   });
