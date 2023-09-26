@@ -33,11 +33,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     passWord.splice(0, passWord.length - passwordLenghtValue);
 
-    const pwGeneratedContainer = document.getElementById(
-      "passWordGeneratorContainer"
-    );
+    const pwGeneratedContainer = document.getElementById("passWordGenerated");
 
-    pwGeneratedContainer.innerText = passWord.join("");
+    pwGeneratedContainer.value = passWord.join("");
 
     function getRandomCharacters(array, n) {
       let newArray = [];
@@ -48,5 +46,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
       }
       return newArray;
     }
+
+    copyButton.addEventListener("click", function () {
+      let copyText = document.getElementById("passWordGenerated");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copyText.value);
+
+     let tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = " Password copied ";
+    });
+
+    copyButton.addEventListener("mouseout", function() {
+      let tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copy to clipboard";
+    });
   });
 });

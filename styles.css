@@ -16,7 +16,7 @@
   --texts-color: greenyellow;
 }
 body {
--webkit-user-select: none;
+  -webkit-user-select: none;
   user-select: none;
   font-family: sans-serif;
   letter-spacing: 0.1rem;
@@ -132,8 +132,8 @@ input[type="range"]::-ms-fill-upper {
 
 .form-submit {
   padding: 0.5rem 1rem;
-  color: white;
-  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  background: var(--texts-color);
   border-radius: 0.4rem;
   border: none;
   font-family: monospace;
@@ -145,13 +145,77 @@ input[type="range"]::-ms-fill-upper {
   font-family: monospace;
   letter-spacing: 0;
 }
-.password-generated {
+.password-generated-container {
+  display: flex;
   text-align: center;
-  width: 90%;
-  padding: 0.5rem 1rem;
+  width: 70%;
   border: 1px solid;
   -webkit-user-select: all;
   user-select: all;
-  
-  
+  justify-content: space-between;
+  border-radius: 0.4rem;
+
+}
+
+.password-generated {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.copy-button{
+  position: relative;
+  color: var(--color-primary);
+  background: var(--texts-color);
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  user-select: none;
+  cursor: pointer;
+  transition: text-decoration 1s;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+.copy-button:hover, .form-submit:hover{
+  text-decoration: underline;
+  outline: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
