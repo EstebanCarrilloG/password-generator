@@ -35,7 +35,17 @@
             >
           <button class="form-submit" type="submit">Generate password</button>
         </form>
-        <div class="password-generated" id="passWordGeneratorContainer">Password output</div>
+        <div class="password-generated-container">
+          <input class="password-generated" id="passWordGenerated" placeholder="Generated password"/>
+          <div class="tooltip">
+            <button class="copy-button" id="copyButton" >
+              <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+              Copy
+              </button>
+            </div>
+          
+        </div>
+        
       </div>
     </section>
     <script src="./index.js"></script>
