@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles.css" />
-    <title>Strong password generator</title>
-  </head>
-  <body>
-    <section class="section">
-      
-      <div class="container">
-        <h1 class="section-title">Strong password generator</h1>
-        <form class="form"
-          id="passwordGeneratorForm"
-          oninput="result.value=passwordLenght.value"
-        >
-          <label for="passwordLenghtRange"
-            >Select the number of characters
-            <input
-            class="range"
-              type="range"
-              name="passwordLenght"
-              id="passwordLenghtRange"
-              min="10"
-              max="20"
-              value="12"
-            /></label>
-            <output
-              class="range-value"
-              name="result"
-              for="passwordLenghtRange"
-              >12</output
-            >
-          <button class="form-submit" type="submit">Generate password</button>
-        </form>
-        <div class="password-generated-container">
-          <input class="password-generated" id="passWordGenerated" placeholder="Generated password"/>
-          <div class="tooltip">
-            <button class="copy-button" id="copyButton" >
-              <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
-              Copy PassWord
-              </button>
-            </div>
-          
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Select the number of characters and click on generate password.">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Esteban Carrillo">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./styles.min.css" />
+  <title>Strong password generator</title>
+
+</head>
+
+<body>
+  <section class="section">
+
+    <div class="container">
+      <h1 class="section-title">Strong password generator</h1>
+      <form class="form" id="passwordGeneratorForm" oninput="result.value=passwordLenght.value">
+        <label for="passwordLenghtRange">Select the number of characters
+          <input class="range" type="range" name="passwordLenght" id="passwordLenghtRange" min="10" max="20"
+            value="12" /></label>
+        <output class="range-value" name="result" for="passwordLenghtRange">12</output>
+        <button class="form-submit" type="submit">Generate password</button>
+      </form>
+      <div class="password-generated-container">
+        <input class="password-generated" id="passWordGenerated" placeholder="Generated password" />
+        <div class="tooltip">
+          <button class="copy-button" id="copyButton">
+            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+            Copy PassWord
+          </button>
         </div>
-        
+
       </div>
-    </section>
-    <script src="./index.js"></script>
-  </body>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p> Strong password generator | ©2024</p>
+    <p>All rights reserved.</p>
+    <p></p><br>
+    <p>Developed by: <a href="https://github.com/EstebanCarrilloG">Esteban Carrillo</a></p>
+  </footer>
+  <script src="./index.min.js"></script>
+</body>
+
 </html>

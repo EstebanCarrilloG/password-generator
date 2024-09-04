@@ -225,6 +225,22 @@ input[type="range"]::-ms-fill-upper {
   opacity: 1;
 }
 
+footer {
+  align-items: center;
+  background: var(--color-primary);
+  color: var(--texts-color);
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+footer a {
+  color: var(--color-secondary);
+  
+}
+
 @media screen and (max-width: 461px) {
   .container {
     padding: 2rem 1rem;
