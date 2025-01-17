@@ -1,7 +1,17 @@
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", function () {
   const passWordGeneratorForm = document.getElementById(
     "passwordGeneratorForm"
   );
+
+  function getRandomCharacters(array, n) {
+    let newArray = [];
+    array.split("");
+
+    for (let i = 0; i < n; i++) {
+      newArray.push(array[Math.floor(Math.random() * array.length)]);
+    }
+    return newArray;
+  }
 
   passWordGeneratorForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -16,49 +26,31 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     let passwordLenghtValue = e.target.passwordLenght.value;
 
-    if (passwordLenghtValue > 20) {
-      passwordLenghtValue = 20;
-    }
-
-    if (passwordLenghtValue < 10) {
-      passwordLenghtValue = 10;
-    }
-
-    if (specialCharactersCheckbox.checked) {
-      characters += specialCharacters;
-    }
+    specialCharactersCheckbox.checked && (characters += specialCharacters);
+    passwordLenghtValue > 20 && (passwordLenghtValue = 20);
+    passwordLenghtValue < 10 && (passwordLenghtValue = 10);
 
     passWord = []
       .concat(getRandomCharacters(characters, passwordLenghtValue))
       .sort(() => Math.random() - 0.5);
 
     const pwGeneratedContainer = document.getElementById("passWordGenerated");
-
     pwGeneratedContainer.value = passWord.join("");
+  });
 
-    function getRandomCharacters(array, n) {
-      let newArray = [];
-      array.split("");
+  copyButton.addEventListener("click", function () {
+    let copyText = document.getElementById("passWordGenerated");
 
-      for (let i = 0; i < n; i++) {
-        newArray.push(array[Math.floor(Math.random() * array.length)]);
-      }
-      return newArray;
-    }
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
 
-    copyButton.addEventListener("click", function () {
-      let copyText = document.getElementById("passWordGenerated");
-      copyText.select();
-      copyText.setSelectionRange(0, 99999);
-      navigator.clipboard.writeText(copyText.value);
+    let tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = " Password copied ";
+  });
 
-      let tooltip = document.getElementById("myTooltip");
-      tooltip.innerHTML = " Password copied ";
-    });
-
-    copyButton.addEventListener("mouseout", function () {
-      let tooltip = document.getElementById("myTooltip");
-      tooltip.innerHTML = "Copy to clipboard";
-    });
+  copyButton.addEventListener("mouseout", function () {
+    let tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copy to clipboard";
   });
 });
