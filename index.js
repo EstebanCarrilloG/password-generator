@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   passWordGeneratorForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const letters = "abcdefghijklmnopqrstuvwxyz";
-    const letterUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numbers = "0123456789";
-    const specialCharacters = "!#$%&'*+,-./:_@;";
+    const specialCharactersCheckbox =
+      document.getElementById("specialCharacters");
+
+    let characters =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let specialCharacters = "!#$%&'*+,-./:_@;";
     let passWord = [];
 
     let passwordLenghtValue = e.target.passwordLenght.value;
@@ -22,16 +24,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
       passwordLenghtValue = 10;
     }
 
-    const digitsNumber = Math.round(passwordLenghtValue / 4);
+    if (specialCharactersCheckbox.checked) {
+      characters += specialCharacters;
+    }
 
     passWord = []
-      .concat(getRandomCharacters(letters, digitsNumber))
-      .concat(getRandomCharacters(letterUppercase, digitsNumber))
-      .concat(getRandomCharacters(numbers, digitsNumber))
-      .concat(getRandomCharacters(specialCharacters, digitsNumber))
+      .concat(getRandomCharacters(characters, passwordLenghtValue))
       .sort(() => Math.random() - 0.5);
-
-    passWord.splice(0, passWord.length - passwordLenghtValue);
 
     const pwGeneratedContainer = document.getElementById("passWordGenerated");
 
@@ -53,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
       copyText.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(copyText.value);
 
-     let tooltip = document.getElementById("myTooltip");
+      let tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = " Password copied ";
     });
 
-    copyButton.addEventListener("mouseout", function() {
+    copyButton.addEventListener("mouseout", function () {
       let tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copy to clipboard";
     });
