@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const passWordGeneratorForm = document.getElementById(
-    "passwordGeneratorForm"
-  );
-
+  
   function getRandomCharacters(array, n) {
     let newArray = [];
     array.split("");
@@ -13,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return newArray;
   }
 
-  passWordGeneratorForm.addEventListener("submit", (e) => {
+  function generatePassword(e) {
     e.preventDefault();
 
     const specialCharactersCheckbox =
@@ -26,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let passwordLenghtValue = e.target.passwordLenght.value;
 
-    specialCharactersCheckbox.checked && (characters += specialCharacters);
+    specialCharactersCheckbox.checked &&
+      (characters += specialCharacters) &&
+      console.log("hi");
     passwordLenghtValue > 20 && (passwordLenghtValue = 20);
     passwordLenghtValue < 10 && (passwordLenghtValue = 10);
 
@@ -34,11 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .concat(getRandomCharacters(characters, passwordLenghtValue))
       .sort(() => Math.random() - 0.5);
 
-    const pwGeneratedContainer = document.getElementById("passWordGenerated");
-    pwGeneratedContainer.value = passWord.join("");
-  });
+    showPassword("show", passWord.join(""));
+  }
 
-  copyButton.addEventListener("click", function () {
+  function copyPasswordToClipboard() {
     let copyText = document.getElementById("passWordGenerated");
 
     copyText.select();
@@ -47,10 +45,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = " Password copied ";
-  });
+  }
 
-  copyButton.addEventListener("mouseout", function () {
+  function showTextOnHover() {
     let tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copy to clipboard";
-  });
+  }
+
+  function showPassword(type = "clear", passWord) {
+    let pwGeneratedContainer = document.getElementById("passWordGenerated");
+    pwGeneratedContainer.value = type === "show" ? passWord : "";
+  }
+
+  const passWordGeneratorForm = document.getElementById(
+    "passwordGeneratorForm"
+  );
+  const specialCharactersCheckbox =
+    document.getElementById("specialCharacters");
+  const passWordLengthRange = document.getElementById("passwordLenghtRange");
+
+  passWordGeneratorForm.addEventListener("submit", generatePassword);
+  copyButton.addEventListener("mouseout", showTextOnHover);
+  copyButton.addEventListener("click", copyPasswordToClipboard);
+  specialCharactersCheckbox.addEventListener("change", showPassword);
+  passWordLengthRange.addEventListener("change", showPassword);
 });
